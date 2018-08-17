@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -28,6 +29,22 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getUsers() {
         return StreamSupport.stream(this.userRepository.findAll().spliterator(), false)
                 .map(this.userConverter::convertUser)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDto> getUsersSortedByName() {
+        return StreamSupport.stream(this.userRepository.findAll().spliterator(), false)
+                .map(this.userConverter::convertUser)
+                .sorted(Comparator.comparing(UserDto::getName))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDto> getUsersSortedByMailAddress() {
+        return StreamSupport.stream(this.userRepository.findAll().spliterator(), false)
+                .map(this.userConverter::convertUser)
+                .sorted(Comparator.comparing(UserDto::getMailAddress))
                 .collect(Collectors.toList());
     }
 }

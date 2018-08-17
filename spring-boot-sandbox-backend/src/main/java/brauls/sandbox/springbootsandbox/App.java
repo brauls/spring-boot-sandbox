@@ -26,6 +26,22 @@ public class App {
             demoUser1.setName("Benedikt");
             demoUser1.setMailAddress("brauls101@gmail.com");
             this.userRepository.save(demoUser1);
+            final User demoUser2 = new User();
+            demoUser2.setName("Martin");
+            demoUser2.setMailAddress("lux@gmail.com");
+            this.userRepository.save(demoUser2);
+            final User demoUser3 = new User();
+            demoUser3.setName("Manuel");
+            demoUser3.setMailAddress("fuchs@gmail.com");
+            this.userRepository.save(demoUser3);
+            final User demoUser4 = new User();
+            demoUser4.setName("Jens");
+            demoUser4.setMailAddress("wambach@gmail.com");
+            this.userRepository.save(demoUser4);
+            final User demoUser5 = new User();
+            demoUser5.setName("Tim");
+            demoUser5.setMailAddress("woerner@gmail.com");
+            this.userRepository.save(demoUser5);
         });
     }
 }
